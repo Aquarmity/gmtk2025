@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=4 uid="uid://da7j6kuxieyoi"]
+
+[ext_resource type="PackedScene" uid="uid://do40uvfgyk7cd" path="res://player/player.tscn" id="1_yi3jx"]
+[ext_resource type="PackedScene" uid="uid://cke6xey2upun" path="res://destructable_wall/destructable_wall.tscn" id="2_foxie"]
+[ext_resource type="Texture2D" uid="uid://btxn0ts8ews5v" path="res://player/temp.png" id="3_7d3si"]
+[ext_resource type="PackedScene" uid="uid://dns556i44l82v" path="res://door/door.tscn" id="4_jum3j"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yi3jx"]
+texture = ExtResource("3_7d3si")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_1ainy"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_yi3jx")
+
+[node name="Level" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_yi3jx")]
+position = Vector2(14, 167)
+
+[node name="DestructableWall" parent="." instance=ExtResource("2_foxie")]
+position = Vector2(211, 169)
+
+[node name="DestructableWall2" parent="." instance=ExtResource("2_foxie")]
+position = Vector2(254, 166)
+
+[node name="DestructableWall3" parent="." instance=ExtResource("2_foxie")]
+position = Vector2(233, 166)
+
+[node name="TileMap" type="TileMapLayer" parent="."]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAAAAAsAAAAAAAAAAAABAAsAAAAAAAAAAAACAAsAAAAAAAAAAAADAAsAAAAAAAAAAAAEAAsAAAAAAAAAAAAFAAsAAAAAAAAAAAAGAAsAAAAAAAAAAAAHAAsAAAAAAAAAAAAIAAsAAAAAAAAAAAAJAAsAAAAAAAAAAAAKAAsAAAAAAAAAAAALAAsAAAAAAAAAAAAMAAsAAAAAAAAAAAANAAsAAAAAAAAAAAAOAAsAAAAAAAAAAAAPAAsAAAAAAAAAAAAQAAsAAAAAAAAAAAARAAsAAAAAAAAAAAASAAsAAAAAAAAAAAATAAsAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_1ainy")
+
+[node name="Door" parent="." instance=ExtResource("4_jum3j")]
+z_index = -2
+position = Vector2(302, 168)

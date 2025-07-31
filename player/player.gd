@@ -5,8 +5,8 @@ extends CharacterBody2D
 @onready var collision = $CollisionShape2D
 @onready var sprite = $Sprite2D
 
-@export var SPEED = 300.0
-@export var JUMP_VELOCITY = -800.0
+@export var SPEED = 75.0
+@export var JUMP_VELOCITY = -300.0
 var frozen_scene = preload("res://frozen_player/frozen_player.tscn")
 @export var color: GlobalVars.PlayerColor
 var spawnPos: Vector2
