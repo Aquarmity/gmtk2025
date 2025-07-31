@@ -1,16 +1,49 @@
-[gd_scene load_steps=3 format=3 uid="uid://cbkrji1uw12qy"]
+[gd_scene load_steps=7 format=3 uid="uid://cbkrji1uw12qy"]
 
-[ext_resource type="Texture2D" uid="uid://btxn0ts8ews5v" path="res://player/temp.png" id="1_ax2cu"]
+[ext_resource type="Texture2D" uid="uid://bieb3jek4pjp7" path="res://player/blue_walking.png" id="1_ax2cu"]
+[ext_resource type="Script" uid="uid://ceovf2v123ve0" path="res://frozen_player/frozen_player.gd" id="1_e0bfu"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e0bfu"]
-radius = 8.0
-height = 16.0
+[sub_resource type="AtlasTexture" id="AtlasTexture_e0bfu"]
+atlas = ExtResource("1_ax2cu")
+region = Rect2(114, 0, 19, 13)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_155ka"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e0bfu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y6vae"]
+size = Vector2(16, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e0bfu"]
+size = Vector2(16, 11)
 
 [node name="FrozenPlayer" type="RigidBody2D"]
 lock_rotation = true
+freeze = true
+contact_monitor = true
+constant_force = Vector2(0, -9.81)
+script = ExtResource("1_e0bfu")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_ax2cu")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -5)
+sprite_frames = SubResource("SpriteFrames_155ka")
+offset = Vector2(-0.5, -0.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_e0bfu")
+position = Vector2(0, -5.5)
+shape = SubResource("RectangleShape2D_y6vae")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -5.5)
+shape = SubResource("RectangleShape2D_e0bfu")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

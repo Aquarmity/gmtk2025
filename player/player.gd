@@ -3,18 +3,19 @@ extends CharacterBody2D
 @onready var explosion_area = $ExplosionArea/CollisionShape2D
 @onready var timer = $Timer
 @onready var collision = $CollisionShape2D
-@onready var sprite = $Sprite2D
+@onready var sprite = $RedAnimatedSprite2D
 
 @export var SPEED = 75.0
 @export var JUMP_VELOCITY = -300.0
 var frozen_scene = preload("res://frozen_player/frozen_player.tscn")
-@export var color: GlobalVars.PlayerColor
+var color: GlobalVars.PlayerColor
 var spawnPos: Vector2
 var allow_input = true
 
 func _ready() -> void:
 	spawnPos = position
 	explosion_area.disabled = true
+	set_color(GlobalVars.PlayerColor.RED)
 
 func _physics_process(delta: float) -> void:
 	if allow_input:
@@ -33,12 +34,21 @@ func _physics_process(delta: float) -> void:
 			velocity.x = direction * SPEED
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
+			
+		if direction > 0:
+			sprite.flip_h = false
+		elif direction < 0:
+			sprite.flip_h = true
 		
+		if direction == 0:
+			sprite.play("idle")
+		else:
+			sprite.play("walk")
 
 	move_and_slide()
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("action") and allow_input:
+	if event.is_action_pressed("action") and allow_input and is_on_floor():
 		allow_input = false
 		velocity = Vector2(0, 0)
 		
@@ -67,8 +77,16 @@ func _on_timer_timeout() -> void:
 	collision.disabled = false
 	sprite.visible = true
 	
-	color = (color + 1) % 3
+	set_color((color + 1) % 3)
 
 func set_color(c: GlobalVars.PlayerColor) -> void:
 	color = c
-	print(color)
+	sprite.visible = false
+	match color:
+		GlobalVars.PlayerColor.RED:
+			sprite = $RedAnimatedSprite2D
+		GlobalVars.PlayerColor.GREEN:
+			sprite = $GreenAnimatedSprite2D
+		GlobalVars.PlayerColor.BLUE:
+			sprite = $BlueAnimatedSprite2D
+	sprite.visible = true
