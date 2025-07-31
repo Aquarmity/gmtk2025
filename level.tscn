@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://da7j6kuxieyoi"]
+
+[ext_resource type="Texture2D" uid="uid://fhkubpopt5nm" path="res://icon.svg" id="1_u52ul"]
+[ext_resource type="PackedScene" uid="uid://do40uvfgyk7cd" path="res://player/player.tscn" id="1_vonw3"]
+[ext_resource type="PackedScene" uid="uid://cke6xey2upun" path="res://destructable_wall/destructable_wall.tscn" id="3_oi3di"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vonw3"]
+size = Vector2(318, 11)
+
+[node name="Level" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_vonw3")]
+position = Vector2(47, 63)
+SPEED = 75.0
+JUMP_VELOCITY = -375.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(159, 173.5)
+shape = SubResource("RectangleShape2D_vonw3")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(157.5, 174)
+scale = Vector2(2.46094, 0.0937504)
+texture = ExtResource("1_u52ul")
+
+[node name="DestructableWall" parent="." instance=ExtResource("3_oi3di")]
+position = Vector2(211, 157)
+
+[node name="DestructableWall2" parent="." instance=ExtResource("3_oi3di")]
+position = Vector2(264, 156)
+
+[node name="DestructableWall3" parent="." instance=ExtResource("3_oi3di")]
+position = Vector2(238, 157)
