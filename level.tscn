@@ -12,7 +12,7 @@ size = Vector2(318, 11)
 [node name="Player" parent="." instance=ExtResource("1_vonw3")]
 position = Vector2(47, 63)
 SPEED = 75.0
-JUMP_VELOCITY = -375.0
+JUMP_VELOCITY = -300.0
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
