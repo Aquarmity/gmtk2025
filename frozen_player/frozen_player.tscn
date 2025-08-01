@@ -24,11 +24,7 @@ size = Vector2(16, 11)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e0bfu"]
 size = Vector2(16, 11)
 
-[node name="FrozenPlayer" type="RigidBody2D"]
-lock_rotation = true
-freeze = true
-contact_monitor = true
-constant_force = Vector2(0, -9.81)
+[node name="FrozenPlayer" type="CharacterBody2D"]
 script = ExtResource("1_e0bfu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

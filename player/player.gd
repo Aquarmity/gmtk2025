@@ -50,7 +50,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("action") and allow_input and is_on_floor() and color != GlobalVars.PlayerColor.NORMAL:
+	if event.is_action_pressed("action") and allow_input and color != GlobalVars.PlayerColor.NORMAL:
 		allow_input = false
 		velocity = Vector2(0, 0)
 		
