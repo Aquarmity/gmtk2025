@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=4 uid="uid://da7j6kuxieyoi"]
+[gd_scene load_steps=11 format=4 uid="uid://da7j6kuxieyoi"]
 
 [ext_resource type="PackedScene" uid="uid://do40uvfgyk7cd" path="res://player/player.tscn" id="1_yi3jx"]
 [ext_resource type="PackedScene" uid="uid://cke6xey2upun" path="res://destructable_wall/destructable_wall.tscn" id="2_foxie"]
 [ext_resource type="Texture2D" uid="uid://btxn0ts8ews5v" path="res://player/temp.png" id="3_7d3si"]
 [ext_resource type="PackedScene" uid="uid://dns556i44l82v" path="res://door/door.tscn" id="4_jum3j"]
-[ext_resource type="Texture2D" uid="uid://ckh28wh0o6lyf" path="res://black.png" id="5_foxie"]
+[ext_resource type="Texture2D" uid="uid://ckh28wh0o6lyf" path="res://queue_tiles.png" id="5_foxie"]
+[ext_resource type="PackedScene" uid="uid://n6kv2a8rv81r" path="res://queue/queue_manager.tscn" id="6_7d3si"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yi3jx"]
 texture = ExtResource("3_7d3si")
@@ -19,15 +20,19 @@ sources/0 = SubResource("TileSetAtlasSource_yi3jx")
 texture = ExtResource("5_foxie")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_jum3j"]
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_7d3si")
 
-[node name="Level" type="Node2D"]
+[node name="Level0" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_yi3jx")]
-position = Vector2(93, 140)
+position = Vector2(79, 176)
 
 [node name="DestructableWall" parent="." instance=ExtResource("2_foxie")]
 position = Vector2(233, 146)
@@ -47,6 +52,12 @@ use_parent_material = true
 tile_map_data = PackedByteArray("AAAAAAsAAAAAAAAAAAABAAsAAAAAAAAAAAACAAsAAAAAAAAAAAADAAsAAAAAAAAAAAAEAAsAAAAAAAAAAAAFAAsAAAAAAAAAAAAGAAsAAAAAAAAAAAAHAAsAAAAAAAAAAAAIAAsAAAAAAAAAAAAJAAsAAAAAAAAAAAAKAAsAAAAAAAAAAAALAAsAAAAAAAAAAAAMAAsAAAAAAAAAAAANAAsAAAAAAAAAAAAOAAsAAAAAAAAAAAAPAAsAAAAAAAAAAAAQAAsAAAAAAAAAAAARAAsAAAAAAAAAAAASAAsAAAAAAAAAAAATAAsAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_1ainy")
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAAsAAAAAAAAAAAABAAAAAAAAAAAAAAABAAEAAAAAAAAAAAABAAIAAAAAAAAAAAABAAMAAAAAAAAAAAABAAQAAAAAAAAAAAABAAUAAAAAAAAAAAABAAYAAAAAAAAAAAABAAcAAAAAAAAAAAABAAgAAAAAAAAAAAABAAkAAAAAAAAAAAABAAoAAAAAAAAAAAABAAsAAAAAAAAAAAACAAAAAAAAAAAAAAACAAEAAAAAAAAAAAACAAIAAAAAAAAAAAACAAMAAAAAAAAAAAACAAQAAAAAAAAAAAACAAUAAAAAAAAAAAACAAYAAAAAAAAAAAACAAcAAAAAAAAAAAACAAgAAAAAAAAAAAACAAkAAAAAAAAAAAACAAoAAAAAAAAAAAACAAsAAAAAAAAAAAA=")
+[node name="QueueTileMap" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAAsAAAAAAAAAAAABAAAAAAAEAAAAAAABAAEAAAACAAAAAAABAAIAAAAAAAAAAAABAAMAAAAAAAAAAAABAAQAAAAAAAAAAAABAAUAAAAAAAAAAAABAAYAAAAAAAAAAAABAAcAAAAAAAAAAAABAAgAAAAAAAAAAAABAAkAAAAAAAAAAAABAAoAAAAAAAAAAAABAAsAAAAAAAAAAAACAAAAAAAAAAAAAAACAAEAAAADAAAAAAACAAIAAAAAAAAAAAACAAMAAAAAAAAAAAACAAQAAAAAAAAAAAACAAUAAAAAAAAAAAACAAYAAAAAAAAAAAACAAcAAAAAAAAAAAACAAgAAAAAAAAAAAACAAkAAAAAAAAAAAACAAoAAAAAAAAAAAACAAsAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_jum3j")
+
+[node name="QueueManager" parent="." instance=ExtResource("6_7d3si")]
+position = Vector2(24, 30)
+
+[connection signal="update_queue" from="Player" to="QueueManager" method="_on_player_update_queue"]
+[connection signal="next_color" from="QueueManager" to="Player" method="_on_queue_manager_next_color"]

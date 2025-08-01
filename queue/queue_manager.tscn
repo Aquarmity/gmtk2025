@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://n6kv2a8rv81r"]
+
+[ext_resource type="Script" uid="uid://bobvntduhf0kv" path="res://queue/queue_manager.gd" id="1_05glj"]
+
+[node name="QueueManager" type="Node2D"]
+script = ExtResource("1_05glj")

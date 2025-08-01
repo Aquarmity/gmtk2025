@@ -12,6 +12,8 @@ var color: GlobalVars.PlayerColor
 var spawnPos: Vector2
 var allow_input = true
 
+signal update_queue
+
 func _ready() -> void:
 	spawnPos = position
 	explosion_area.disabled = true
@@ -48,7 +50,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("action") and allow_input and is_on_floor():
+	if event.is_action_pressed("action") and allow_input and is_on_floor() and color != GlobalVars.PlayerColor.NORMAL:
 		allow_input = false
 		velocity = Vector2(0, 0)
 		
@@ -64,7 +66,6 @@ func _input(event: InputEvent) -> void:
 				frozen_instance.position = position
 				get_parent().add_child(frozen_instance)
 				position = spawnPos
-				
 		timer.start()
 	
 	if event.is_action_pressed("retry"):
@@ -77,7 +78,7 @@ func _on_timer_timeout() -> void:
 	collision.disabled = false
 	sprite.visible = true
 	
-	set_color((color + 1) % 3)
+	update_queue.emit()
 
 func set_color(c: GlobalVars.PlayerColor) -> void:
 	color = c
@@ -89,4 +90,10 @@ func set_color(c: GlobalVars.PlayerColor) -> void:
 			sprite = $GreenAnimatedSprite2D
 		GlobalVars.PlayerColor.BLUE:
 			sprite = $BlueAnimatedSprite2D
+		GlobalVars.PlayerColor.NORMAL:
+			sprite = $NormalAnimatedSprite2D
 	sprite.visible = true
+
+
+func _on_queue_manager_next_color(color: GlobalVars.PlayerColor) -> void:
+	set_color(color)

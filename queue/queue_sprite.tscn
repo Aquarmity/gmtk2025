@@ -1,0 +1,48 @@
+[gd_scene load_steps=9 format=3 uid="uid://byrpp5eq0p5cm"]
+
+[ext_resource type="Texture2D" uid="uid://b4iii3mbmlja4" path="res://player/red_walking.png" id="1_4i38f"]
+[ext_resource type="Texture2D" uid="uid://crkcucgjhfgy6" path="res://player/green_walking.png" id="2_v05ms"]
+[ext_resource type="Texture2D" uid="uid://bieb3jek4pjp7" path="res://player/blue_walking.png" id="3_ie8b6"]
+[ext_resource type="Texture2D" uid="uid://bb4thkbwnk6f3" path="res://player/normal_walking.png" id="4_v05ms"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1op6u"]
+atlas = ExtResource("1_4i38f")
+region = Rect2(115, 1, 17, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gsnl4"]
+atlas = ExtResource("2_v05ms")
+region = Rect2(115, 1, 17, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nuhlp"]
+atlas = ExtResource("3_ie8b6")
+region = Rect2(115, 1, 17, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ie8b6"]
+atlas = ExtResource("4_v05ms")
+region = Rect2(115, 1, 17, 11)
+
+[node name="QueueSprite" type="Node2D"]
+
+[node name="RedSprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -5)
+texture = SubResource("AtlasTexture_1op6u")
+offset = Vector2(0, -0.5)
+
+[node name="GreenSprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -5)
+texture = SubResource("AtlasTexture_gsnl4")
+offset = Vector2(0, -0.5)
+
+[node name="BlueSprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -5)
+texture = SubResource("AtlasTexture_nuhlp")
+offset = Vector2(0, -0.5)
+
+[node name="NormalSprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -5)
+texture = SubResource("AtlasTexture_ie8b6")
+offset = Vector2(0, -0.5)
