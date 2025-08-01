@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhgo2gag70jdi"
-path="res://.godot/imported/ground_tiles.png-d5f06945ccc02b9ec93dc7a01c9a1d0b.ctex"
+uid="uid://bj2vdd5ebthbr"
+path="res://.godot/imported/thorn_berry_small.png-9a44e82b0dc69d7aa93c5f158c519308.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ground_tiles.png"
-dest_files=["res://.godot/imported/ground_tiles.png-d5f06945ccc02b9ec93dc7a01c9a1d0b.ctex"]
+source_file="res://thorn_berry_small.png"
+dest_files=["res://.godot/imported/thorn_berry_small.png-9a44e82b0dc69d7aa93c5f158c519308.ctex"]
 
 [params]
 

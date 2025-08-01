@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhgo2gag70jdi"
-path="res://.godot/imported/ground_tiles.png-d5f06945ccc02b9ec93dc7a01c9a1d0b.ctex"
+uid="uid://pnjyalhcchjx"
+path="res://.godot/imported/crate.png-b83caf405963e4d199b63b1a11f14613.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ground_tiles.png"
-dest_files=["res://.godot/imported/ground_tiles.png-d5f06945ccc02b9ec93dc7a01c9a1d0b.ctex"]
+source_file="res://crate.png"
+dest_files=["res://.godot/imported/crate.png-b83caf405963e4d199b63b1a11f14613.ctex"]
 
 [params]
 
