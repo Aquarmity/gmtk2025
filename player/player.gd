@@ -78,7 +78,8 @@ func _on_timer_timeout() -> void:
 	collision.disabled = false
 	sprite.visible = true
 	
-	update_queue.emit()
+	#update_queue.emit()
+	set_color((color + 1) % 3)
 
 func set_color(c: GlobalVars.PlayerColor) -> void:
 	color = c

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bj2vdd5ebthbr"
-path="res://.godot/imported/thorn_berry_small.png-9a44e82b0dc69d7aa93c5f158c519308.ctex"
+uid="uid://bgeitvm8an156"
+path="res://.godot/imported/bush.png-2e26c4033a962045fd33552ab7e2846f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://thorn_berry_small.png"
-dest_files=["res://.godot/imported/thorn_berry_small.png-9a44e82b0dc69d7aa93c5f158c519308.ctex"]
+source_file="res://bush.png"
+dest_files=["res://.godot/imported/bush.png-2e26c4033a962045fd33552ab7e2846f.ctex"]
 
 [params]
 

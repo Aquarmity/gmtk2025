@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dm8gpnh77jrak"
-path="res://.godot/imported/thorn_berry_large.png-984d6c0c9befbdb3806b1ad60a4e0b12.ctex"
+uid="uid://cyvycj8fcgxq3"
+path="res://.godot/imported/death_sticks.png-47173f25e297719bd892912a5341bfad.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://thorn_berry_large.png"
-dest_files=["res://.godot/imported/thorn_berry_large.png-984d6c0c9befbdb3806b1ad60a4e0b12.ctex"]
+source_file="res://death_sticks.png"
+dest_files=["res://.godot/imported/death_sticks.png-47173f25e297719bd892912a5341bfad.ctex"]
 
 [params]
 
