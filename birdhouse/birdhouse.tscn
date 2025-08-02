@@ -7,6 +7,7 @@
 size = Vector2(11, 15)
 
 [node name="Birdhouse" type="StaticBody2D"]
+collision_layer = 2
 script = ExtResource("1_d3ab8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

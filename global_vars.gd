@@ -6,3 +6,8 @@ enum PlayerColor {
 	BLUE,
 	NORMAL
 }
+
+enum Direction {
+	LEFT,
+	RIGHT
+}

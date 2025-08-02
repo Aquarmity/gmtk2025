@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://do40uvfgyk7cd"]
+[gd_scene load_steps=46 format=3 uid="uid://do40uvfgyk7cd"]
 
 [ext_resource type="Script" uid="uid://c61re81m4y8n" path="res://player/player.gd" id="1_4flbx"]
 [ext_resource type="Texture2D" uid="uid://crkcucgjhfgy6" path="res://player/green_walking.png" id="2_rkbax"]
@@ -293,7 +293,12 @@ radius = 13.0
 radius = 3.27176
 height = 10.7398
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g6k8r"]
+radius = 3.0
+height = 10.0
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
+collision_mask = 3
 script = ExtResource("1_4flbx")
 
 [node name="RedAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -351,10 +356,18 @@ position = Vector2(0, -3)
 rotation = -1.57079
 shape = SubResource("CapsuleShape2D_qjkh3")
 
+[node name="EnemyDetectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectionArea"]
+position = Vector2(0, -3)
+rotation = 4.71238
+shape = SubResource("CapsuleShape2D_g6k8r")
+
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
 
 [connection signal="body_entered" from="GrassDetectionArea" to="." method="_on_grass_detection_area_body_entered"]
 [connection signal="body_exited" from="GrassDetectionArea" to="." method="_on_grass_detection_area_body_exited"]
+[connection signal="area_entered" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

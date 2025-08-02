@@ -1,10 +1,22 @@
 extends CharacterBody2D
 
+@onready var sprite = $Sprite2D
+
 const BIRD_SPEED = 90
 var a = 0
+var direction: GlobalVars.Direction
 
-func _physics_process(delta: float) -> void:
-	#velocity.x = BIRD_SPEED
-	velocity = Vector2(BIRD_SPEED, sin(a) * delta * 100)
-	a += 0.4
+func _physics_process(_delta: float) -> void:
+	if direction == GlobalVars.Direction.RIGHT:
+		velocity.x = BIRD_SPEED
+	else:
+		velocity.x = -BIRD_SPEED
+		sprite.flip_h = true
 	move_and_slide()
+
+func set_direction(dir: GlobalVars.Direction) -> void:
+	direction = dir
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	queue_free()

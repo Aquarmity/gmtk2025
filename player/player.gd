@@ -19,7 +19,7 @@ signal update_queue
 func _ready() -> void:
 	spawnPos = position
 	explosion_area.disabled = true
-	set_color(GlobalVars.PlayerColor.NORMAL)
+	set_color(GlobalVars.PlayerColor.GREEN)
 
 func _physics_process(delta: float) -> void:
 	if allow_input:
@@ -110,9 +110,17 @@ func _on_queue_manager_next_color(c: GlobalVars.PlayerColor) -> void:
 	set_color(c)
 
 
-func _on_grass_detection_area_body_entered(body: Node2D) -> void:
+func _on_grass_detection_area_body_entered(_body: Node2D) -> void:
 	allow_grass = true
 
 
-func _on_grass_detection_area_body_exited(body: Node2D) -> void:
+func _on_grass_detection_area_body_exited(_body: Node2D) -> void:
 	allow_grass = false
+
+
+func _on_enemy_detection_area_area_entered(area: Area2D) -> void:
+	if area.is_in_group("enemy"):
+		collision.disabled = true
+		sprite.visible = false
+		allow_input = false
+		timer.start()
