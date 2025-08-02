@@ -59,6 +59,7 @@ func _input(event: InputEvent) -> void:
 			GlobalVars.PlayerColor.RED:
 				explosion_area.disabled = false
 				AudioManager.play_sfx(AudioManager.SoundEffects.EXPLOSION)
+				sprite.play("explode")
 			GlobalVars.PlayerColor.GREEN:
 				if (is_on_floor() or is_on_wall()) and allow_grass:
 					collision.disabled = true
@@ -95,6 +96,7 @@ func _on_timer_timeout() -> void:
 	collision.disabled = false
 	sprite.visible = true
 	AudioManager.play_sfx(AudioManager.SoundEffects.RESPAWN)
+	sprite.play("idle")
 	
 	update_queue.emit()
 
@@ -133,3 +135,5 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 		sprite.visible = false
 		allow_input = false
 		timer.start()
+	if area.is_in_group("sushi"):
+		pass

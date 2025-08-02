@@ -1,6 +1,35 @@
-[gd_scene load_steps=4 format=3 uid="uid://bpw88r5c43jnj"]
+[gd_scene load_steps=8 format=3 uid="uid://bpw88r5c43jnj"]
 
-[ext_resource type="Texture2D" uid="uid://bgeitvm8an156" path="res://destructable_wall/bush.png" id="1_8vc13"]
+[ext_resource type="Texture2D" uid="uid://bywwjp7s4f61f" path="res://bush/bush_animation.png" id="1_8vc13"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_esmi3"]
+atlas = ExtResource("1_8vc13")
+region = Rect2(0, 0, 19, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6suj8"]
+atlas = ExtResource("1_8vc13")
+region = Rect2(19, 0, 19, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tytp4"]
+atlas = ExtResource("1_8vc13")
+region = Rect2(38, 0, 19, 15)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p24jg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_esmi3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6suj8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tytp4")
+}],
+"loop": false,
+"name": &"default",
+"speed": 6.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tytp4"]
 size = Vector2(16, 15)
@@ -10,10 +39,13 @@ size = Vector2(16, 15)
 
 [node name="Bush" type="StaticBody2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -8)
-texture = ExtResource("1_8vc13")
-offset = Vector2(0, 0.5)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2, -8)
+sprite_frames = SubResource("SpriteFrames_p24jg")
+autoplay = "default"
+frame = 2
+frame_progress = 1.0
+offset = Vector2(0.5, 0.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -7.5)

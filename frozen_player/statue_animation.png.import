@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://saul1bn7ulpn"
-path="res://.godot/imported/blue_walking.png-825e90391ac04ed7f386ec33a6c8e71d.ctex"
+uid="uid://byufwb6exyatl"
+path="res://.godot/imported/statue_animation.png-f5223d842bcae368c028b4675d7d2cda.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://new_sprites/blue_walking.png"
-dest_files=["res://.godot/imported/blue_walking.png-825e90391ac04ed7f386ec33a6c8e71d.ctex"]
+source_file="res://frozen_player/statue_animation.png"
+dest_files=["res://.godot/imported/statue_animation.png-f5223d842bcae368c028b4675d7d2cda.ctex"]
 
 [params]
 

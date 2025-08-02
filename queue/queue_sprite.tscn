@@ -1,25 +1,25 @@
 [gd_scene load_steps=9 format=3 uid="uid://byrpp5eq0p5cm"]
 
-[ext_resource type="Texture2D" uid="uid://b4iii3mbmlja4" path="res://player/red_walking.png" id="1_4i38f"]
-[ext_resource type="Texture2D" uid="uid://crkcucgjhfgy6" path="res://player/green_walking.png" id="2_v05ms"]
-[ext_resource type="Texture2D" uid="uid://bieb3jek4pjp7" path="res://player/blue_walking.png" id="3_ie8b6"]
-[ext_resource type="Texture2D" uid="uid://bb4thkbwnk6f3" path="res://player/normal_walking.png" id="4_v05ms"]
+[ext_resource type="Texture2D" uid="uid://ct883h1oxar5n" path="res://player/red_walking.png" id="1_4i38f"]
+[ext_resource type="Texture2D" uid="uid://cg3r7tbc0d48q" path="res://player/green_walking.png" id="2_v05ms"]
+[ext_resource type="Texture2D" uid="uid://saul1bn7ulpn" path="res://player/blue_walking.png" id="3_ie8b6"]
+[ext_resource type="Texture2D" uid="uid://d2qx5tq77yx1t" path="res://player/normal_walking.png" id="4_v05ms"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1op6u"]
 atlas = ExtResource("1_4i38f")
-region = Rect2(115, 1, 17, 11)
+region = Rect2(102, 0, 17, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gsnl4"]
 atlas = ExtResource("2_v05ms")
-region = Rect2(115, 1, 17, 11)
+region = Rect2(102, 0, 17, 11)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nuhlp"]
 atlas = ExtResource("3_ie8b6")
-region = Rect2(115, 1, 17, 11)
+region = Rect2(102, 0, 17, 11)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ie8b6"]
 atlas = ExtResource("4_v05ms")
-region = Rect2(115, 1, 17, 11)
+region = Rect2(102, 0, 17, 11)
 
 [node name="QueueSprite" type="Node2D"]
 z_index = 6
