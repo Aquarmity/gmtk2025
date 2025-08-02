@@ -3,21 +3,23 @@ extends CharacterBody2D
 @onready var explosion_area = $ExplosionArea/CollisionShape2D
 @onready var timer = $Timer
 @onready var collision = $CollisionShape2D
-@onready var sprite = $RedAnimatedSprite2D
+@onready var sprite = $NormalAnimatedSprite2D
 
-@export var SPEED = 75.0
-@export var JUMP_VELOCITY = -300.0
+const SPEED = 75.0
+const JUMP_VELOCITY = -300.0
 var frozen_scene = preload("res://frozen_player/frozen_player.tscn")
+var bush_scene = preload("res://bush/bush.tscn")
 var color: GlobalVars.PlayerColor
 var spawnPos: Vector2
 var allow_input = true
+var allow_grass = false
 
 signal update_queue
 
 func _ready() -> void:
 	spawnPos = position
 	explosion_area.disabled = true
-	set_color(GlobalVars.PlayerColor.RED)
+	set_color(GlobalVars.PlayerColor.NORMAL)
 
 func _physics_process(delta: float) -> void:
 	if allow_input:
@@ -51,14 +53,19 @@ func _physics_process(delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("action") and allow_input and color != GlobalVars.PlayerColor.NORMAL:
-		allow_input = false
-		velocity = Vector2(0, 0)
-		
 		match color:
 			GlobalVars.PlayerColor.RED:
 				explosion_area.disabled = false
 			GlobalVars.PlayerColor.GREEN:
-				pass
+				if (is_on_floor() or is_on_wall() or is_on_ceiling()) and allow_grass:
+					collision.disabled = true
+					sprite.visible = false
+					var bush_instance = bush_scene.instantiate()
+					bush_instance.position = position
+					get_parent().add_child(bush_instance)
+					position = spawnPos
+				else:
+					return
 			GlobalVars.PlayerColor.BLUE:
 				collision.disabled = true
 				sprite.visible = false
@@ -66,6 +73,10 @@ func _input(event: InputEvent) -> void:
 				frozen_instance.position = position
 				get_parent().add_child(frozen_instance)
 				position = spawnPos
+
+		# IF THINGS BREAK MOVE THESE BACK TO THE START OF THE FUNCTION
+		allow_input = false
+		velocity = Vector2(0, 0)
 		timer.start()
 	
 	if event.is_action_pressed("retry"):
@@ -78,8 +89,7 @@ func _on_timer_timeout() -> void:
 	collision.disabled = false
 	sprite.visible = true
 	
-	#update_queue.emit()
-	set_color((color + 1) % 3)
+	update_queue.emit()
 
 func set_color(c: GlobalVars.PlayerColor) -> void:
 	color = c
@@ -96,5 +106,13 @@ func set_color(c: GlobalVars.PlayerColor) -> void:
 	sprite.visible = true
 
 
-func _on_queue_manager_next_color(color: GlobalVars.PlayerColor) -> void:
-	set_color(color)
+func _on_queue_manager_next_color(c: GlobalVars.PlayerColor) -> void:
+	set_color(c)
+
+
+func _on_grass_detection_area_body_entered(body: Node2D) -> void:
+	allow_grass = true
+
+
+func _on_grass_detection_area_body_exited(body: Node2D) -> void:
+	allow_grass = false

@@ -22,6 +22,7 @@ atlas = ExtResource("4_v05ms")
 region = Rect2(115, 1, 17, 11)
 
 [node name="QueueSprite" type="Node2D"]
+z_index = 6
 
 [node name="RedSprite2D" type="Sprite2D" parent="."]
 visible = false

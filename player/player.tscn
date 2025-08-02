@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://do40uvfgyk7cd"]
+[gd_scene load_steps=45 format=3 uid="uid://do40uvfgyk7cd"]
 
 [ext_resource type="Script" uid="uid://c61re81m4y8n" path="res://player/player.gd" id="1_4flbx"]
 [ext_resource type="Texture2D" uid="uid://crkcucgjhfgy6" path="res://player/green_walking.png" id="2_rkbax"]
@@ -289,6 +289,10 @@ height = 10.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_rkbax"]
 radius = 13.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qjkh3"]
+radius = 3.27176
+height = 10.7398
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_4flbx")
 
@@ -335,12 +339,22 @@ shape = SubResource("CapsuleShape2D_i3pqv")
 [node name="ExplosionArea" type="Area2D" parent="." groups=["explosion"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionArea"]
-visible = false
 position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_rkbax")
+
+[node name="GrassDetectionArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrassDetectionArea"]
+position = Vector2(0, -3)
+rotation = -1.57079
+shape = SubResource("CapsuleShape2D_qjkh3")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
 
+[connection signal="body_entered" from="GrassDetectionArea" to="." method="_on_grass_detection_area_body_entered"]
+[connection signal="body_exited" from="GrassDetectionArea" to="." method="_on_grass_detection_area_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

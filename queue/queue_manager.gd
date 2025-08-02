@@ -15,11 +15,11 @@ func _ready() -> void:
 	
 	update_queue(queue)
 	
-func update_queue(queue: String) -> void:
+func update_queue(q: String) -> void:
 	for n in get_children():
 		n.queue_free()
 	
-	match queue[0]:
+	match q[0]:
 		"R":
 			next_color.emit(GlobalVars.PlayerColor.RED)
 		"G":
@@ -29,10 +29,10 @@ func update_queue(queue: String) -> void:
 		_:
 			next_color.emit(GlobalVars.PlayerColor.NORMAL)
 	
-	if queue.length() > 1:
+	if q.length() > 1:
 		var cur_pos = Vector2(0, 0)
 		
-		for c in queue.substr(1, queue.length() - 1):
+		for c in q.substr(1, q.length() - 1):
 			var new_sprite = queue_sprite.instantiate()
 			add_child(new_sprite)
 			
