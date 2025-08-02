@@ -14,12 +14,10 @@ var spawnPos: Vector2
 var allow_input = true
 var allow_grass = false
 
-signal update_queue
-
 func _ready() -> void:
+	SignalBus.next_color.connect(_on_next_color)
 	spawnPos = position
 	explosion_area.disabled = true
-	#set_color(GlobalVars.PlayerColor.GREEN)
 
 
 func _physics_process(delta: float) -> void:
@@ -98,7 +96,7 @@ func _on_timer_timeout() -> void:
 	AudioManager.play_sfx(AudioManager.SoundEffects.RESPAWN)
 	sprite.play("idle")
 	
-	update_queue.emit()
+	SignalBus.update_queue.emit()
 
 
 func set_color(c: GlobalVars.PlayerColor) -> void:
@@ -116,7 +114,7 @@ func set_color(c: GlobalVars.PlayerColor) -> void:
 	sprite.visible = true
 
 
-func _on_queue_manager_next_color(c: GlobalVars.PlayerColor) -> void:
+func _on_next_color(c: GlobalVars.PlayerColor) -> void:
 	set_color(c)
 
 

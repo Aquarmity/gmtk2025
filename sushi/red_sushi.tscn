@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dr8v0dcbwa8ha"]
+
+[ext_resource type="Script" uid="uid://b51akqulnlhbl" path="res://sushi/red_sushi.gd" id="1_gjnkb"]
+[ext_resource type="Texture2D" uid="uid://bhp1i8unkxpj5" path="res://sushi/sushi_red.png" id="2_gjnkb"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ie3f0"]
+radius = 3.0
+height = 6.0
+
+[node name="RedSushi" type="Area2D" groups=["sushi"]]
+collision_layer = 4
+script = ExtResource("1_gjnkb")
+
+[node name="RedSprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_gjnkb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = -1.56813
+shape = SubResource("CapsuleShape2D_ie3f0")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]

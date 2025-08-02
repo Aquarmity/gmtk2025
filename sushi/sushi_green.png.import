@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bkctlmimrxl1t"
-path="res://.godot/imported/sushi_green.png-f5e742bb9ac9c4351f2f9439f73a99b7.ctex"
+path="res://.godot/imported/sushi_green.png-5f5cc0add0fa7c0e4bd077e773d4ab4d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sushi_green.png"
-dest_files=["res://.godot/imported/sushi_green.png-f5e742bb9ac9c4351f2f9439f73a99b7.ctex"]
+source_file="res://sushi/sushi_green.png"
+dest_files=["res://.godot/imported/sushi_green.png-5f5cc0add0fa7c0e4bd077e773d4ab4d.ctex"]
 
 [params]
 

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://fyec3h56oqha"]
+
+[ext_resource type="Script" uid="uid://c7lm5fankrhho" path="res://sushi/green_sushi.gd" id="1_ko5nm"]
+[ext_resource type="Texture2D" uid="uid://bkctlmimrxl1t" path="res://sushi/sushi_green.png" id="1_ykn6b"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ko5nm"]
+radius = 3.0
+height = 6.0
+
+[node name="GreenSushi" type="Area2D" groups=["sushi"]]
+collision_layer = 4
+script = ExtResource("1_ko5nm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ykn6b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_ko5nm")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]

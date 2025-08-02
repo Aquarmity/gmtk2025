@@ -3,46 +3,66 @@ extends Node2D
 const FILE_BEGIN = "res://levels/level_queues/level_"
 @onready var queue_sprite = preload("res://queue/queue_sprite.tscn")
 
-var queue: String
-var cur_index = 0
+const NORMAL = "N"
 
-signal next_color(color: GlobalVars.PlayerColor)
+var queue: String
+
 
 func _ready() -> void:
+	SignalBus.update_queue.connect(_on_update_queue)
+	SignalBus.append_queue.connect(_on_append_queue)
+	
 	var cur_level = get_tree().current_scene.scene_file_path.to_int()
 	var f = FileAccess.open(FILE_BEGIN + str(cur_level) + ".txt", FileAccess.READ)
 	queue = f.get_as_text()
+	queue = queue.substr(0, queue.length() - 1)
+	f.close()
 	
+	update_player(queue[0])
+	queue = queue.substr(1)
 	update_queue(queue)
-	
+
+func update_player(next: String) -> void:
+	match next:
+		"R":
+			SignalBus.next_color.emit(GlobalVars.PlayerColor.RED)
+		"G":
+			SignalBus.next_color.emit(GlobalVars.PlayerColor.GREEN)
+		"B":
+			SignalBus.next_color.emit(GlobalVars.PlayerColor.BLUE)
+		_:
+			SignalBus.next_color.emit(GlobalVars.PlayerColor.NORMAL)
+
 func update_queue(q: String) -> void:
 	for n in get_children():
 		n.queue_free()
 	
 	var cur_pos = Vector2(0, 0)
 	
-	if q.length() < 2:
-		next_color.emit(GlobalVars.PlayerColor.NORMAL)
-		create_sprite("N", cur_pos)
-	else:
-		match q[0]:
-			"R":
-				next_color.emit(GlobalVars.PlayerColor.RED)
-			"G":
-				next_color.emit(GlobalVars.PlayerColor.GREEN)
-			"B":
-				next_color.emit(GlobalVars.PlayerColor.BLUE)
-			_:
-				next_color.emit(GlobalVars.PlayerColor.NORMAL)
-		
-		
-		for c in q.substr(1, q.length() - 1):
-			create_sprite(c, cur_pos)
-			cur_pos.y += 15
+	for c in q:
+		create_sprite(c, cur_pos)
+		cur_pos.y += 15
+	create_sprite(NORMAL, cur_pos)
 
-func _on_player_update_queue() -> void:
-	cur_index += 1
-	update_queue(queue.substr(cur_index))
+func _on_update_queue() -> void:
+	if queue.length() > 0:
+		update_player(queue[0])
+		queue = queue.substr(1)
+		update_queue(queue)
+	else:
+		update_player(NORMAL)
+
+func _on_append_queue(color: GlobalVars.PlayerColor) -> void:
+	match color:
+		GlobalVars.PlayerColor.RED:
+			queue += "R"
+		GlobalVars.PlayerColor.GREEN:
+			queue += "G"
+		GlobalVars.PlayerColor.BLUE:
+			queue += "B"
+		GlobalVars.PlayerColor.NORMAL:
+			pass
+	update_queue(queue)
 
 func create_sprite(c: String, pos: Vector2) -> void:
 	var new_sprite = queue_sprite.instantiate()
