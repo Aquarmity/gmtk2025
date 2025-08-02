@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cke6xey2upun"]
 
 [ext_resource type="Script" uid="uid://33g50bvfrqt1" path="res://destructable_wall/destructable_wall.gd" id="1_sf7tx"]
-[ext_resource type="Texture2D" uid="uid://bgeitvm8an156" path="res://bush.png" id="2_sf7tx"]
+[ext_resource type="Texture2D" uid="uid://bgeitvm8an156" path="res://destructable_wall/bush.png" id="2_sf7tx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dtiey"]
 size = Vector2(16, 15)

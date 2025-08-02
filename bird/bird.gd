@@ -6,6 +6,9 @@ const BIRD_SPEED = 90
 var a = 0
 var direction: GlobalVars.Direction
 
+func _ready() -> void:
+	AudioManager.play_sfx(AudioManager.SoundEffects.BIRD_CHIRP)
+
 func _physics_process(_delta: float) -> void:
 	if direction == GlobalVars.Direction.RIGHT:
 		velocity.x = BIRD_SPEED
@@ -18,5 +21,5 @@ func set_direction(dir: GlobalVars.Direction) -> void:
 	direction = dir
 
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
+func _on_area_2d_body_entered(_body: Node2D) -> void:
 	queue_free()

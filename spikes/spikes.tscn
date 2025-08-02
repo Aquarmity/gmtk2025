@@ -1,11 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://bwhrrckye7i42"]
 
-[ext_resource type="Texture2D" uid="uid://cyvycj8fcgxq3" path="res://death_sticks.png" id="1_jhskg"]
+[ext_resource type="Texture2D" uid="uid://cyvycj8fcgxq3" path="res://spikes/death_sticks.png" id="1_jhskg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vktsv"]
 size = Vector2(16, 5)
 
 [node name="Spikes" type="Area2D" groups=["enemy"]]
+collision_layer = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -3)

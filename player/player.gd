@@ -21,6 +21,7 @@ func _ready() -> void:
 	explosion_area.disabled = true
 	set_color(GlobalVars.PlayerColor.GREEN)
 
+
 func _physics_process(delta: float) -> void:
 	if allow_input:
 		# Add the gravity.
@@ -51,20 +52,24 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("action") and allow_input and color != GlobalVars.PlayerColor.NORMAL:
 		match color:
 			GlobalVars.PlayerColor.RED:
 				explosion_area.disabled = false
+				AudioManager.play_sfx(AudioManager.SoundEffects.EXPLOSION)
 			GlobalVars.PlayerColor.GREEN:
-				if (is_on_floor() or is_on_wall() or is_on_ceiling()) and allow_grass:
+				if (is_on_floor() or is_on_wall()) and allow_grass:
 					collision.disabled = true
 					sprite.visible = false
 					var bush_instance = bush_scene.instantiate()
 					bush_instance.position = position
 					get_parent().add_child(bush_instance)
 					position = spawnPos
+					AudioManager.play_sfx(AudioManager.SoundEffects.BUSH)
 				else:
+					AudioManager.play_sfx(AudioManager.SoundEffects.NO_BUSH)
 					return
 			GlobalVars.PlayerColor.BLUE:
 				collision.disabled = true
@@ -73,8 +78,8 @@ func _input(event: InputEvent) -> void:
 				frozen_instance.position = position
 				get_parent().add_child(frozen_instance)
 				position = spawnPos
+				AudioManager.play_sfx(AudioManager.SoundEffects.STATUE)
 
-		# IF THINGS BREAK MOVE THESE BACK TO THE START OF THE FUNCTION
 		allow_input = false
 		velocity = Vector2(0, 0)
 		timer.start()
@@ -82,14 +87,17 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("retry"):
 		get_tree().reload_current_scene()
 
+
 func _on_timer_timeout() -> void:
 	position = spawnPos
 	explosion_area.disabled = true
 	allow_input = true
 	collision.disabled = false
 	sprite.visible = true
+	AudioManager.play_sfx(AudioManager.SoundEffects.RESPAWN)
 	
 	update_queue.emit()
+
 
 func set_color(c: GlobalVars.PlayerColor) -> void:
 	color = c
@@ -118,8 +126,9 @@ func _on_grass_detection_area_body_exited(_body: Node2D) -> void:
 	allow_grass = false
 
 
-func _on_enemy_detection_area_area_entered(area: Area2D) -> void:
+func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("enemy"):
+		velocity = Vector2(0, 0)
 		collision.call_deferred("set_disabled", true)
 		sprite.visible = false
 		allow_input = false

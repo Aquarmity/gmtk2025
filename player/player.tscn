@@ -356,9 +356,10 @@ position = Vector2(0, -3)
 rotation = -1.57079
 shape = SubResource("CapsuleShape2D_qjkh3")
 
-[node name="EnemyDetectionArea" type="Area2D" parent="."]
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectionArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(0, -3)
 rotation = 4.71238
 shape = SubResource("CapsuleShape2D_g6k8r")
@@ -369,5 +370,5 @@ one_shot = true
 
 [connection signal="body_entered" from="GrassDetectionArea" to="." method="_on_grass_detection_area_body_entered"]
 [connection signal="body_exited" from="GrassDetectionArea" to="." method="_on_grass_detection_area_body_exited"]
-[connection signal="area_entered" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_area_entered"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
