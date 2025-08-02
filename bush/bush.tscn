@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://bpw88r5c43jnj"]
+[gd_scene load_steps=9 format=3 uid="uid://bpw88r5c43jnj"]
 
 [ext_resource type="Texture2D" uid="uid://bywwjp7s4f61f" path="res://bush/bush_animation.png" id="1_8vc13"]
+[ext_resource type="Script" uid="uid://d0jprrd7t3nnj" path="res://bush/bush.gd" id="1_esmi3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_esmi3"]
 atlas = ExtResource("1_8vc13")
@@ -38,6 +39,7 @@ size = Vector2(16, 15)
 size = Vector2(16, 15)
 
 [node name="Bush" type="StaticBody2D"]
+script = ExtResource("1_esmi3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-2, -8)
@@ -52,7 +54,11 @@ position = Vector2(0, -7.5)
 shape = SubResource("RectangleShape2D_tytp4")
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, -7.5)
 shape = SubResource("RectangleShape2D_p24jg")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
