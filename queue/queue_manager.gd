@@ -19,6 +19,9 @@ func update_queue(q: String) -> void:
 	for n in get_children():
 		n.queue_free()
 	
+	if q.length() == 0:
+		return
+	
 	match q[0]:
 		"R":
 			next_color.emit(GlobalVars.PlayerColor.RED)

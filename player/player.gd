@@ -120,7 +120,7 @@ func _on_grass_detection_area_body_exited(_body: Node2D) -> void:
 
 func _on_enemy_detection_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("enemy"):
-		collision.disabled = true
+		collision.call_deferred("set_disabled", true)
 		sprite.visible = false
 		allow_input = false
 		timer.start()

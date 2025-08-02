@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vktsv"]
 size = Vector2(16, 5)
 
-[node name="Spikes" type="Area2D"]
+[node name="Spikes" type="Area2D" groups=["enemy"]]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -3)
