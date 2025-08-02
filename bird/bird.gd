@@ -1,9 +1,8 @@
 extends CharacterBody2D
 
-@onready var sprite = $Sprite2D
+@onready var sprite = $AnimatedSprite2D
 
-const BIRD_SPEED = 90
-var a = 0
+const BIRD_SPEED = 120
 var direction: GlobalVars.Direction
 
 func _ready() -> void:
@@ -22,4 +21,7 @@ func set_direction(dir: GlobalVars.Direction) -> void:
 
 
 func _on_area_2d_body_entered(_body: Node2D) -> void:
+	queue_free()
+
+func _on_area_2d_area_entered(_area: Area2D) -> void:
 	queue_free()

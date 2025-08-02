@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bwhrrckye7i42" path="res://spikes/spikes.tscn" id="8_c4pne"]
 [ext_resource type="PackedScene" uid="uid://dr8v0dcbwa8ha" path="res://sushi/red_sushi.tscn" id="9_tfamw"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7d3si"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tfamw"]
 texture = ExtResource("5_foxie")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -25,7 +25,7 @@ texture = ExtResource("5_foxie")
 
 [sub_resource type="TileSet" id="TileSet_jum3j"]
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_7d3si")
+sources/0 = SubResource("TileSetAtlasSource_tfamw")
 
 [node name="Level0" type="Node2D"]
 
@@ -47,7 +47,7 @@ position = Vector2(290, 136)
 
 [node name="TileMap" type="TileMapLayer" parent="."]
 use_parent_material = true
-tile_map_data = PackedByteArray("AAAAAAsAAAAAAAAAAAABAAsAAAAAAAAAAAACAAsAAAAAAAAAAAADAAsAAAAAAAAAAAAEAAsAAAAAAAAAAAAFAAsAAAAAAAAAAAAGAAsAAAAAAAAAAAAHAAsAAAAAAAAAAAAIAAsAAAAAAAAAAAAJAAsAAAAAAAAAAAAKAAsAAAAAAAAAAAALAAsAAAAAAAAAAAAMAAsAAAAAAAAAAAANAAsAAAAAAAAAAAAOAAsAAAAAAAAAAAAPAAsAAAAAAAAAAAAQAAsAAAABAAUAAAATAAsAAAAAAAUAAAAQAAkAAAABAAIAAAARAAkAAAAAAAEAAAASAAkAAAAAAAAAAAATAAkAAAAAAAIAAAAQAAoAAAACAAAAAAATAAoAAAADAAAAAAARAAoAAAAEAAAAAAASAAoAAAAEAAAAAAARAAsAAAAEAAAAAAASAAsAAAAEAAAAAAA=")
+tile_map_data = PackedByteArray("AAAAAAsAAAAFAAAAAAABAAsAAAAFAAAAAAACAAsAAAAFAAAAAAADAAsAAAAFAAAAAAAEAAsAAAAFAAAAAAAFAAsAAAAFAAAAAAAGAAsAAAAFAAAAAAAHAAsAAAAFAAAAAAAIAAsAAAAFAAAAAAAJAAsAAAAFAAAAAAAKAAsAAAAFAAAAAAALAAsAAAAFAAAAAAAMAAsAAAAFAAAAAAANAAsAAAAFAAAAAAAOAAsAAAAFAAAAAAAPAAsAAAAFAAAAAAATAAsAAAABAAEAAAAQAAkAAAAEAAAAAAARAAkAAAAFAAAAAAASAAkAAAAGAAAAAAATAAkAAAAHAAAAAAAQAAoAAAAFAAAAAGATAAoAAAAFAAAAAFARAAoAAAADAAAAAAASAAoAAAADAAAAAAARAAsAAAADAAAAAAASAAsAAAADAAAAAAAQAAsAAAABAAEAAGA=")
 tile_set = ExtResource("4_c4pne")
 
 [node name="QueueManager" parent="." instance=ExtResource("6_7d3si")]

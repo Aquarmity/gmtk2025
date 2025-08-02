@@ -19,7 +19,7 @@ signal update_queue
 func _ready() -> void:
 	spawnPos = position
 	explosion_area.disabled = true
-	set_color(GlobalVars.PlayerColor.GREEN)
+	#set_color(GlobalVars.PlayerColor.GREEN)
 
 
 func _physics_process(delta: float) -> void:

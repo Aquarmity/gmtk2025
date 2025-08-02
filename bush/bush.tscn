@@ -39,6 +39,7 @@ size = Vector2(16, 15)
 size = Vector2(16, 15)
 
 [node name="Bush" type="StaticBody2D"]
+collision_layer = 9
 script = ExtResource("1_esmi3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
