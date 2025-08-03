@@ -1,9 +1,14 @@
-[gd_scene load_steps=7 format=4 uid="uid://bq088wp3icamv"]
+[gd_scene load_steps=12 format=4 uid="uid://bq088wp3icamv"]
 
 [ext_resource type="PackedScene" uid="uid://do40uvfgyk7cd" path="res://player/player.tscn" id="1_t0qhu"]
 [ext_resource type="TileSet" uid="uid://bltjavai5sndr" path="res://tileset.tres" id="2_t6q73"]
 [ext_resource type="PackedScene" uid="uid://n6kv2a8rv81r" path="res://queue/queue_manager.tscn" id="3_hokjj"]
 [ext_resource type="Texture2D" uid="uid://ckh28wh0o6lyf" path="res://queue_tiles.png" id="4_0fd8o"]
+[ext_resource type="PackedScene" uid="uid://c8yhhbn2871d1" path="res://sushi/blue_sushi.tscn" id="5_t6q73"]
+[ext_resource type="PackedScene" uid="uid://bwhrrckye7i42" path="res://spikes/spikes.tscn" id="6_0fd8o"]
+[ext_resource type="PackedScene" uid="uid://cbkrji1uw12qy" path="res://frozen_player/frozen_player.tscn" id="6_hokjj"]
+[ext_resource type="PackedScene" uid="uid://whlrsawq0dec" path="res://cheese/cheese.tscn" id="8_sc6c1"]
+[ext_resource type="PackedScene" uid="uid://dns556i44l82v" path="res://door/door.tscn" id="9_ng40l"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ilhis"]
 texture = ExtResource("4_0fd8o")
@@ -25,9 +30,10 @@ sources/0 = SubResource("TileSetAtlasSource_ilhis")
 [node name="Level2" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_t0qhu")]
-position = Vector2(87, 66)
+position = Vector2(63, 153)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAACAAoAAAAFAAAAAFACAAgAAAAFAAAAAFACAAcAAAABAAIAAFACAAUAAAACAAAAAAACAAMAAAABAAIAAAACAAAAAAAFAAAAAFATAAEAAAAFAAAAAGATAAMAAAABAAIAADATAAQAAAAFAAAAAGATAAcAAAABAAIAAGATAAkAAAAFAAIAAAATAAoAAAAFAAIAAAATAAgAAAAFAAIAAAATAAYAAAAFAAAAAGATAAUAAAAGAAAAAGATAAIAAAABAAIAAGATAAAAAAAGAAAAAGACAAEAAAAGAAAAAFACAAIAAAAGAAAAAFACAAQAAAACAAAAAAACAAYAAAACAAAAAAACAAkAAAAGAAAAAFADAAsAAAAGAAAAAAAFAAsAAAAGAAAAAAAGAAsAAAAGAAAAAAAIAAsAAAABAAIAAGAKAAsAAAAFAAIAAAAMAAsAAAAFAAIAAAAPAAsAAAAFAAIAAAARAAsAAAAFAAIAAAASAAsAAAAFAAIAAAAQAAsAAAAFAAIAAAAOAAsAAAAFAAIAAAANAAsAAAAFAAIAAAALAAsAAAAFAAIAAAAJAAsAAAAFAAIAAAAHAAsAAAAFAAAAAAAEAAsAAAAFAAAAAAACAAsAAAABAAEAAAATAAsAAAAFAAIAAAADAP//AAADAAAAAAAEAP//AAADAAAAAAAFAP//AAADAAAAAAAGAP//AAADAAAAAAAHAP//AAADAAAAAAAIAP//AAADAAAAAAAJAP//AAADAAAAAAAKAP//AAADAAAAAAALAP//AAADAAAAAAAMAP//AAADAAAAAAANAP//AAADAAAAAAAOAP//AAADAAAAAAAPAP//AAADAAAAAAAQAP//AAADAAAAAAARAP//AAADAAAAAAASAP//AAADAAAAAAADAAcAAAAFAAAAADAEAAcAAAAAAAEAAHARAAkAAAAFAAIAAAAQAAkAAAABAAIAAGAQAAoAAAAFAAIAAAARAAoAAAAFAAIAAAASAAoAAAAFAAIAAAASAAkAAAAFAAIAAAAKAAoAAAAFAAAAAAALAAoAAAAGAAAAAAAMAAoAAAABAAIAAGANAAoAAAAFAAIAAAAIAAkAAAAHAAIAADAIAAoAAAAAAAEAAAAJAAoAAAAGAAAAAAAMAAkAAAAEAAAAAAANAAkAAAADAAEAAGAOAAkAAAAFAAAAAAAPAAkAAAAFAAAAAAAOAAoAAAAFAAIAAAAPAAoAAAAFAAIAAAANAAgAAAAHAAIAADAQAAgAAAAEAAAAAAARAAcAAAAEAAAAAAARAAgAAAABAAEAAGASAAcAAAAFAAAAAAASAAgAAAAFAAIAAAAQAAUAAAABAAAAAAAPAAQAAAAEAAIAAGAOAAQAAAAFAAEAAAANAAQAAAAGAAEAAAAMAAQAAAAHAAEAAGAMAAUAAAAHAAEAAFALAAUAAAAFAAEAAAAKAAUAAAAHAAIAAFAFAAcAAAAHAAIAAGADAAYAAAACAAAAAAAEAAQAAAAHAAAAAAADAAMAAAAEAAAAAFADAAQAAAABAAIAAAADAAUAAAACAAAAAAAEAAYAAAAGAAAAAFAEAAUAAAAGAAAAAFAFAAIAAAABAAAAAAAGAAEAAAAEAAIAAFAHAAEAAAAGAAEAAAAJAAEAAAAGAAEAAAAKAAEAAAAGAAEAAAARAAIAAAAGAAEAAAASAAIAAAAAAAEAAEAQAAIAAAACAAIAAGALAAEAAAAFAAEAAAAIAAEAAAAFAAEAAAAOAAEAAAAHAAIAAGANAAEAAAAFAAEAAAAMAAEAAAAFAAEAAAAPAAIAAAAEAAIAAFAJAAYAAAABAAAAAAASAAMAAAAEAAAAAGA=")
 tile_set = ExtResource("2_t6q73")
 
 [node name="QueueManager" parent="." instance=ExtResource("3_hokjj")]
@@ -38,3 +44,60 @@ position = Vector2(16, 45)
 z_index = 5
 tile_map_data = PackedByteArray("AAAAAAEAAAADAAAAAAAAAAMAAAACAAAAAAAAAAQAAAACAAAAAAAAAAUAAAACAAAAAAAAAAYAAAACAAAAAAAAAAcAAAACAAAAAAAAAAgAAAACAAAAAAAAAAkAAAACAAAAAAABAAEAAAAEAAAAAAABAAMAAAACAAAAAAABAAQAAAACAAAAAAABAAUAAAACAAAAAAABAAYAAAACAAAAAAABAAcAAAACAAAAAAABAAgAAAACAAAAAAABAAkAAAACAAAAAAAAAAoAAAACAAAAAAAAAAsAAAACAAAAAAABAAoAAAACAAAAAAABAAsAAAACAAAAAAAAAAAAAAACAAAAAAABAAAAAAACAAAAAAABAAIAAAABAAAAAAAAAAIAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_ep78u")
+
+[node name="BlueSushi2" parent="." instance=ExtResource("5_t6q73")]
+position = Vector2(200, 141)
+
+[node name="BlueSushi3" parent="." instance=ExtResource("5_t6q73")]
+position = Vector2(216, 125)
+
+[node name="Spikes" parent="." instance=ExtResource("6_0fd8o")]
+position = Vector2(152, 160)
+
+[node name="Spikes2" parent="." instance=ExtResource("6_0fd8o")]
+position = Vector2(184, 160)
+
+[node name="Spikes3" parent="." instance=ExtResource("6_0fd8o")]
+position = Vector2(168, 160)
+
+[node name="FrozenPlayer" parent="." instance=ExtResource("6_hokjj")]
+position = Vector2(168, 122)
+
+[node name="FrozenPlayer2" parent="." instance=ExtResource("6_hokjj")]
+position = Vector2(121, 147)
+
+[node name="Spikes4" parent="." instance=ExtResource("6_0fd8o")]
+position = Vector2(232, 144)
+
+[node name="Spikes5" parent="." instance=ExtResource("6_0fd8o")]
+position = Vector2(248, 144)
+
+[node name="BlueSushi" parent="." instance=ExtResource("5_t6q73")]
+position = Vector2(297, 109)
+
+[node name="FrozenPlayer5" parent="." instance=ExtResource("6_hokjj")]
+position = Vector2(87, 112)
+
+[node name="FrozenPlayer6" parent="." instance=ExtResource("6_hokjj")]
+position = Vector2(89, 103)
+
+[node name="FrozenPlayer7" parent="." instance=ExtResource("6_hokjj")]
+position = Vector2(95, 94)
+
+[node name="FrozenPlayer3" parent="." instance=ExtResource("6_hokjj")]
+position = Vector2(148, 96)
+
+[node name="BlueSushi4" parent="." instance=ExtResource("5_t6q73")]
+position = Vector2(166, 77)
+
+[node name="BlueSushi5" parent="." instance=ExtResource("5_t6q73")]
+position = Vector2(176, 77)
+
+[node name="BlueSushi6" parent="." instance=ExtResource("5_t6q73")]
+position = Vector2(186, 77)
+
+[node name="Cheese" parent="." instance=ExtResource("8_sc6c1")]
+position = Vector2(296, 32)
+
+[node name="Door" parent="." instance=ExtResource("9_ng40l")]
+position = Vector2(285, 32)
