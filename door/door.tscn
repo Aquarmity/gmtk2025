@@ -1,21 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://dns556i44l82v"]
+[gd_scene load_steps=5 format=3 uid="uid://dns556i44l82v"]
 
-[ext_resource type="Texture2D" uid="uid://b3nqt2d45plk0" path="res://door/door.png" id="1_plcny"]
 [ext_resource type="Script" uid="uid://daqhimgmw5rlk" path="res://door/door.gd" id="1_rdd60"]
+[ext_resource type="Texture2D" uid="uid://3618ofdpqoqb" path="res://mice.png" id="2_rdd60"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_08xnr"]
+atlas = ExtResource("2_rdd60")
+region = Rect2(0, 0, 8, 7)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rdd60"]
-size = Vector2(4, 5)
+size = Vector2(5, 5.5)
 
 [node name="Door" type="Node2D"]
 script = ExtResource("1_rdd60")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_plcny")
+position = Vector2(0, -4)
+texture = SubResource("AtlasTexture_08xnr")
+offset = Vector2(0, 0.5)
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 5.5)
+position = Vector2(0.5, -2.75)
 shape = SubResource("RectangleShape2D_rdd60")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

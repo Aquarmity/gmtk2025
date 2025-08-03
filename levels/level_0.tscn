@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://da7j6kuxieyoi"]
+[gd_scene load_steps=15 format=4 uid="uid://da7j6kuxieyoi"]
 
 [ext_resource type="PackedScene" uid="uid://do40uvfgyk7cd" path="res://player/player.tscn" id="1_yi3jx"]
 [ext_resource type="PackedScene" uid="uid://cke6xey2upun" path="res://destructable_wall/destructable_wall.tscn" id="2_foxie"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dr8v0dcbwa8ha" path="res://sushi/red_sushi.tscn" id="9_tfamw"]
 [ext_resource type="PackedScene" uid="uid://fyec3h56oqha" path="res://sushi/green_sushi.tscn" id="10_obtcn"]
 [ext_resource type="PackedScene" uid="uid://c8yhhbn2871d1" path="res://sushi/blue_sushi.tscn" id="11_2ro2b"]
+[ext_resource type="PackedScene" uid="uid://whlrsawq0dec" path="res://cheese/cheese.tscn" id="12_2ro2b"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tfamw"]
 texture = ExtResource("5_foxie")
@@ -45,7 +46,10 @@ position = Vector2(248, 169)
 
 [node name="Door" parent="." instance=ExtResource("4_jum3j")]
 z_index = -2
-position = Vector2(290, 136)
+position = Vector2(295, 144)
+
+[node name="Cheese" parent="." instance=ExtResource("12_2ro2b")]
+position = Vector2(311, 144)
 
 [node name="TileMap" type="TileMapLayer" parent="."]
 use_parent_material = true

@@ -59,8 +59,6 @@ func _on_update_queue() -> void:
 		is_normal_cat = true
 
 func _on_append_queue(color: GlobalVars.PlayerColor) -> void:
-	
-	print(is_normal_cat)
 	match color:
 		GlobalVars.PlayerColor.RED:
 			queue += "R"
@@ -75,8 +73,6 @@ func _on_append_queue(color: GlobalVars.PlayerColor) -> void:
 		queue = queue.substr(1)
 		is_normal_cat = false
 	update_queue(queue)
-	
-	print(is_normal_cat)
 
 func create_sprite(c: String, pos: Vector2) -> void:
 	var new_sprite = queue_sprite.instantiate()
