@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bwhrrckye7i42"]
 
-[ext_resource type="Texture2D" uid="uid://cyvycj8fcgxq3" path="res://spikes/death_sticks.png" id="1_jhskg"]
+[ext_resource type="Texture2D" uid="uid://u34fywdey4re" path="res://spikes/spikes.png" id="1_jhskg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vktsv"]
 size = Vector2(16, 5)

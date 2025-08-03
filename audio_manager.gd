@@ -9,7 +9,9 @@ enum SoundEffects {
 	BUSH,
 	NO_BUSH,
 	BIRD_CHIRP,
-	MENU_BUTTON
+	MENU_BUTTON,
+	LEVEL_COMPLETE,
+	HURT
 }
 
 enum Songs {
@@ -24,7 +26,9 @@ const SFX_RESOURCES := {
 	SoundEffects.BUSH: preload("res://player/bush.wav"),
 	SoundEffects.NO_BUSH: preload("res://player/no_bush.wav"),
 	SoundEffects.BIRD_CHIRP: preload("res://bird/bird_chirp.wav"),
-	SoundEffects.MENU_BUTTON: preload("res://main_menu/menu_select.wav")
+	SoundEffects.MENU_BUTTON: preload("res://main_menu/menu_select.wav"),
+	SoundEffects.LEVEL_COMPLETE: preload("res://door/level_complete.wav"),
+	SoundEffects.HURT: preload("res://player/hurt.wav")
 }
 
 const SONG_RESOURCES := {

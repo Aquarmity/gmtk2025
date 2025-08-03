@@ -13,3 +13,5 @@ enum Direction {
 }
 
 var main_menu_music_playing = false
+
+var next_level_path: String = "res://levels/level_0.tscn"

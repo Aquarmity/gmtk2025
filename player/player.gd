@@ -132,6 +132,7 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 		collision.call_deferred("set_disabled", true)
 		sprite.visible = false
 		allow_input = false
+		AudioManager.play_sfx(AudioManager.SoundEffects.HURT)
 		timer.start()
 	if area.is_in_group("sushi"):
 		pass

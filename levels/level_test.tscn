@@ -1,0 +1,100 @@
+[gd_scene load_steps=17 format=4 uid="uid://bejcdpa5uiyxk"]
+
+[ext_resource type="Script" uid="uid://bstvc25wrcaja" path="res://levels/level.gd" id="1_ca4i1"]
+[ext_resource type="PackedScene" uid="uid://do40uvfgyk7cd" path="res://player/player.tscn" id="2_8sp67"]
+[ext_resource type="PackedScene" uid="uid://cke6xey2upun" path="res://destructable_wall/destructable_wall.tscn" id="3_qyf36"]
+[ext_resource type="PackedScene" uid="uid://dns556i44l82v" path="res://door/door.tscn" id="4_f33k1"]
+[ext_resource type="PackedScene" uid="uid://whlrsawq0dec" path="res://cheese/cheese.tscn" id="5_6hwsd"]
+[ext_resource type="TileSet" uid="uid://bltjavai5sndr" path="res://tileset.tres" id="6_p60vf"]
+[ext_resource type="PackedScene" uid="uid://n6kv2a8rv81r" path="res://queue/queue_manager.tscn" id="7_o6ev6"]
+[ext_resource type="Texture2D" uid="uid://ckh28wh0o6lyf" path="res://queue_tiles.png" id="8_4skyc"]
+[ext_resource type="PackedScene" uid="uid://b8vgnc0qe7yqb" path="res://birdhouse/birdhouse.tscn" id="9_b545k"]
+[ext_resource type="PackedScene" uid="uid://bwhrrckye7i42" path="res://spikes/spikes.tscn" id="10_sr3fv"]
+[ext_resource type="PackedScene" uid="uid://dr8v0dcbwa8ha" path="res://sushi/red_sushi.tscn" id="11_pxnvp"]
+[ext_resource type="PackedScene" uid="uid://fyec3h56oqha" path="res://sushi/green_sushi.tscn" id="12_0brv5"]
+[ext_resource type="PackedScene" uid="uid://c8yhhbn2871d1" path="res://sushi/blue_sushi.tscn" id="13_3y2y2"]
+[ext_resource type="PackedScene" uid="uid://bry07eap3hmqc" path="res://pause_menu/pause_menu.tscn" id="14_euh2h"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tfamw"]
+texture = ExtResource("8_4skyc")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_jum3j"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_tfamw")
+
+[node name="LevelTest" type="Node2D"]
+script = ExtResource("1_ca4i1")
+
+[node name="Player" parent="." instance=ExtResource("2_8sp67")]
+position = Vector2(77, 154)
+
+[node name="DestructableWall" parent="." instance=ExtResource("3_qyf36")]
+position = Vector2(273, 122)
+
+[node name="DestructableWall2" parent="." instance=ExtResource("3_qyf36")]
+position = Vector2(273, 137)
+
+[node name="DestructableWall3" parent="." instance=ExtResource("3_qyf36")]
+position = Vector2(248, 169)
+
+[node name="Door" parent="." instance=ExtResource("4_f33k1")]
+z_index = -2
+position = Vector2(295, 144)
+
+[node name="Cheese" parent="." instance=ExtResource("5_6hwsd")]
+position = Vector2(311, 144)
+
+[node name="TileMap" type="TileMapLayer" parent="."]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAAAAAsAAAAFAAAAAAABAAsAAAAFAAAAAAACAAsAAAAFAAAAAAADAAsAAAAFAAAAAAAEAAsAAAAFAAAAAAAFAAsAAAAFAAAAAAAGAAsAAAAFAAAAAAAHAAsAAAAFAAAAAAAIAAsAAAAFAAAAAAAJAAsAAAAFAAAAAAAKAAsAAAAFAAAAAAALAAsAAAAFAAAAAAAMAAsAAAAFAAAAAAANAAsAAAAFAAAAAAAOAAsAAAAFAAAAAAAPAAsAAAAFAAAAAAATAAsAAAABAAEAAAAQAAkAAAAEAAAAAAARAAkAAAAFAAAAAAASAAkAAAAGAAAAAAATAAkAAAAHAAAAAAAQAAoAAAAFAAAAAGATAAoAAAAFAAAAAFARAAoAAAADAAAAAAASAAoAAAADAAAAAAARAAsAAAADAAAAAAASAAsAAAADAAAAAAAQAAsAAAABAAEAAGA=")
+tile_set = ExtResource("6_p60vf")
+
+[node name="QueueManager" parent="." instance=ExtResource("7_o6ev6")]
+z_index = 1
+position = Vector2(16, 45)
+
+[node name="QueueTileMap" type="TileMapLayer" parent="."]
+z_index = 5
+tile_map_data = PackedByteArray("AAAAAAEAAAADAAAAAAAAAAMAAAACAAAAAAAAAAQAAAACAAAAAAAAAAUAAAACAAAAAAAAAAYAAAACAAAAAAAAAAcAAAACAAAAAAAAAAgAAAACAAAAAAAAAAkAAAACAAAAAAABAAEAAAAEAAAAAAABAAMAAAACAAAAAAABAAQAAAACAAAAAAABAAUAAAACAAAAAAABAAYAAAACAAAAAAABAAcAAAACAAAAAAABAAgAAAACAAAAAAABAAkAAAACAAAAAAAAAAoAAAACAAAAAAAAAAsAAAACAAAAAAABAAoAAAACAAAAAAABAAsAAAACAAAAAAAAAAAAAAACAAAAAAABAAAAAAACAAAAAAABAAIAAAABAAAAAAAAAAIAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_jum3j")
+
+[node name="Birdhouse" parent="." instance=ExtResource("9_b545k")]
+position = Vector2(145, 176)
+
+[node name="Birdhouse2" parent="." instance=ExtResource("9_b545k")]
+position = Vector2(145, 161)
+direction = 0
+
+[node name="Spikes" parent="." instance=ExtResource("10_sr3fv")]
+position = Vector2(127, 176)
+
+[node name="RedSushi" parent="." instance=ExtResource("11_pxnvp")]
+position = Vector2(106, 172)
+
+[node name="GreenSushi" parent="." instance=ExtResource("12_0brv5")]
+position = Vector2(47, 172)
+
+[node name="GreenSushi2" parent="." instance=ExtResource("12_0brv5")]
+position = Vector2(43, 154)
+
+[node name="BlueSushi" parent="." instance=ExtResource("13_3y2y2")]
+position = Vector2(37, 171)
+
+[node name="BlueSushi2" parent="." instance=ExtResource("13_3y2y2")]
+position = Vector2(184, 171)
+
+[node name="RedSushi2" parent="." instance=ExtResource("11_pxnvp")]
+position = Vector2(185, 159)
+
+[node name="PauseMenu" parent="." instance=ExtResource("14_euh2h")]
+visible = false

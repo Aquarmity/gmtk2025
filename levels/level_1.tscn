@@ -1,15 +1,17 @@
-[gd_scene load_steps=11 format=4 uid="uid://yvgcqiysv4pb"]
+[gd_scene load_steps=13 format=4 uid="uid://dnoa8f0s56oi5"]
 
+[ext_resource type="Script" uid="uid://bstvc25wrcaja" path="res://levels/level.gd" id="1_08mmt"]
 [ext_resource type="PackedScene" uid="uid://do40uvfgyk7cd" path="res://player/player.tscn" id="1_jirdo"]
 [ext_resource type="TileSet" uid="uid://bltjavai5sndr" path="res://tileset.tres" id="2_n46q3"]
 [ext_resource type="PackedScene" uid="uid://cke6xey2upun" path="res://destructable_wall/destructable_wall.tscn" id="4_btoec"]
 [ext_resource type="Texture2D" uid="uid://ckh28wh0o6lyf" path="res://queue_tiles.png" id="6_gwceb"]
+[ext_resource type="PackedScene" uid="uid://fyec3h56oqha" path="res://sushi/green_sushi.tscn" id="7_08mmt"]
 [ext_resource type="PackedScene" uid="uid://n6kv2a8rv81r" path="res://queue/queue_manager.tscn" id="7_l53as"]
-[ext_resource type="PackedScene" uid="uid://dr8v0dcbwa8ha" path="res://sushi/red_sushi.tscn" id="8_l53as"]
+[ext_resource type="PackedScene" uid="uid://bry07eap3hmqc" path="res://pause_menu/pause_menu.tscn" id="9_3sk1a"]
 [ext_resource type="PackedScene" uid="uid://whlrsawq0dec" path="res://cheese/cheese.tscn" id="9_08mmt"]
 [ext_resource type="PackedScene" uid="uid://dns556i44l82v" path="res://door/door.tscn" id="10_5ot28"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3sk1a"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ilhis"]
 texture = ExtResource("6_gwceb")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -22,71 +24,64 @@ texture = ExtResource("6_gwceb")
 4:0/0 = 0
 4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="TileSet" id="TileSet_08mmt"]
+[sub_resource type="TileSet" id="TileSet_ep78u"]
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_3sk1a")
+sources/0 = SubResource("TileSetAtlasSource_ilhis")
 
 [node name="Level1" type="Node2D"]
-position = Vector2(320, 0)
+script = ExtResource("1_08mmt")
 
 [node name="Player" parent="." instance=ExtResource("1_jirdo")]
-position = Vector2(-257, 41)
+position = Vector2(217, 73)
 
-[node name="TileMap" type="TileMapLayer" parent="."]
-use_parent_material = true
-tile_map_data = PackedByteArray("AADs/wAAAAAGAAIAAADs/wEAAAAGAAIAAADs/wIAAAAGAAIAAADs/wMAAAAGAAIAAADs/wQAAAAGAAIAAADs/wUAAAAGAAIAAADs/wYAAAAGAAIAAADs/wcAAAAGAAIAAADs/wgAAAAGAAIAAADs/wkAAAAGAAIAAADs/woAAAAGAAIAAADs/wsAAAAGAAIAAADt/wsAAAAGAAIAAADt/woAAAAGAAIAAADt/wkAAAAGAAIAAADt/wgAAAAGAAIAAADt/wcAAAAGAAIAAADt/wYAAAAGAAIAAADt/wUAAAAGAAIAAADt/wQAAAAGAAIAAADt/wMAAAAGAAIAAADt/wIAAAAGAAIAAADt/wEAAAAGAAIAAADt/wAAAAAGAAIAAADu/wsAAAAFAAIAAADv/wsAAAAFAAIAAADx/wsAAAAFAAIAAADz/wsAAAABAAIAAAD2/wsAAAAFAAAAAAD4/wsAAAAFAAAAAAD7/wsAAAAFAAAAAAD9/wsAAAAFAAAAAAD//wsAAAABAAIAAGD+/wsAAAAGAAAAAAD8/wsAAAAGAAAAAAD6/wsAAAAGAAAAAAD5/wsAAAAGAAAAAAD3/wsAAAAGAAAAAAD1/wsAAAAGAAAAAAD0/wsAAAAGAAAAAADy/wsAAAAFAAIAAADw/wsAAAAFAAIAAAD+////AAACAAAAAAD9////AAACAAAAAAD8////AAACAAAAAAD7////AAACAAAAAAD6////AAACAAAAAAD5////AAACAAAAAAD4////AAACAAAAAAD3////AAACAAAAAAD2////AAACAAAAAAD1////AAACAAAAAAD0////AAACAAAAAADz////AAACAAAAAADy////AAACAAAAAADx////AAACAAAAAADw////AAACAAAAAADv////AAACAAAAAADu/woAAAAFAAIAAADu/wgAAAAGAAAAAFDu/wYAAAABAAEAAADu/wUAAAAGAAAAAFDu/wMAAAAGAAAAAFDu/wAAAAAGAAAAAFDu/wkAAAABAAIAAADu/wcAAAABAAIAAFDu/wQAAAADAAEAAADu/wEAAAAFAAAAAFDu/wIAAAAFAAAAAFD//wEAAAAFAAAAAGD//wQAAAAFAAAAAGD//wYAAAAFAAAAAGD//wcAAAAFAAAAAGD//wkAAAAFAAAAAGD//woAAAAGAAAAAGD//wgAAAAGAAAAAGD//wUAAAAGAAAAAGD//wMAAAAGAAAAAGD//wIAAAAGAAAAAGD//wAAAAAGAAAAAGD0/wMAAAAGAAEAAAD1/wMAAAAFAAEAAAD2/wMAAAAFAAEAAADz/wQAAAACAAEAADDv/wQAAAAFAAEAAADw/wQAAAAFAAEAAADx/wQAAAAGAAEAAADy/wQAAAAFAAEAAADz/wMAAAAHAAEAAGD0/wEAAAAHAAIAAADz/wAAAAAEAAAAAGD0/wAAAAAAAAEAADDv/wcAAAAFAAAAADDx/wcAAAAAAAEAAHDy/wcAAAAFAAEAAAD0/wcAAAAFAAEAAAD2/wcAAAAFAAEAAAD5/wcAAAAFAAEAAAD7/wcAAAAFAAEAAAD9/wcAAAAHAAIAAGD8/wcAAAAGAAEAAAD6/wcAAAAGAAEAAAD4/wcAAAAGAAEAAAD3/wcAAAAGAAEAAAD1/wcAAAAGAAEAAADz/wcAAAAGAAEAAADw/wcAAAAGAAAAADDz/wUAAAAHAAIAAADv/wYAAAAFAAAAAADw/wYAAAAGAAAAAADx/wYAAAAHAAAAAAD4/wMAAAAFAAEAAAD3/wMAAAAGAAEAAAD5/wMAAAAFAAEAAAD6/wMAAAAGAAEAAAD7/wMAAAAFAAEAAAD8/wMAAAAHAAEAAFD6/wAAAAAGAAEAAGD6/wEAAAAEAAIAAAD8/wIAAAAEAAIAADDv/wkAAAAFAAAAAADx/wkAAAADAAIAAGDw/wkAAAAGAAAAAADy/wkAAAAHAAAAAADz/woAAAAEAAAAAFDy/woAAAABAAEAAADv/woAAAADAAAAAADw/woAAAADAAAAAADx/woAAAADAAAAAAA=")
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAHAP//AAAFAAIAAAAIAP//AAAFAAIAAAAJAP//AAAFAAIAAAAKAP//AAAFAAIAAAALAP//AAAFAAIAAAAMAP//AAAFAAIAAAANAP//AAAFAAIAAAAOAP//AAAFAAIAAAAPAP//AAAFAAIAAAAQAP//AAAFAAIAAAARAP//AAAFAAIAAAARAAsAAAAFAAIAAAAQAAsAAAAFAAIAAAAOAAsAAAAGAAAAAAAMAAsAAAAGAAAAAAALAAsAAAAGAAAAAAAJAAsAAAAGAAAAAAAHAAsAAAAGAAAAAAAEAAsAAAAGAAAAAAADAAsAAAAGAAAAAAAFAAsAAAAFAAAAAAAGAAsAAAAFAAAAAAAIAAsAAAADAAEAAGAKAAsAAAAFAAAAAAANAAsAAAAFAAAAAAAPAAsAAAABAAEAAGASAAsAAAAFAAIAAAATAAoAAAAFAAIAAAATAAAAAAABAAIAADATAAIAAAAGAAAAAGATAAMAAAAFAAAAAGATAAUAAAABAAEAADATAAcAAAAGAAAAAGACAAkAAAAFAAAAAFACAAcAAAAFAAAAAFACAAQAAAAFAAAAAFACAAMAAAAFAAAAAFACAAEAAAABAAIAAFACAAAAAAAFAAIAAAACAAIAAAAGAAAAAFACAAUAAAAGAAAAAFACAAYAAAAGAAAAAFACAAgAAAAGAAAAAFACAAoAAAAGAAAAAFATAAkAAAABAAIAAGATAAgAAAAGAAAAAGATAAYAAAAGAAAAAGATAAQAAAABAAEAAGATAAEAAAAFAAAAAGASAAQAAAAEAAAAAAAEAAUAAAAGAAEAAGAEAAQAAAAHAAEAAGAEAAcAAAAFAAEAAGAEAAYAAAAGAAEAAGAEAAgAAAAGAAEAAGAEAAkAAAAEAAIAAAAMAAMAAAACAAEAAAAMAAYAAAACAAEAAAANAAMAAAAGAAEAADANAAYAAAAFAAEAAAAOAAYAAAAGAAEAAAAQAAUAAAAHAAIAAFARAAUAAAAGAAEAAAAMAAEAAAAHAAIAADAMAAIAAAAGAAEAAGAMAAQAAAACAAEAADAMAAUAAAAGAAEAAFAOAAMAAAAHAAIAAGAPAAYAAAAHAAIAAGAQAAMAAAABAAAAAAASAAUAAAAAAAIAAGAIAAoAAAAGAAEAAGAIAAkAAAAGAAEAAGAIAAgAAAAGAAEAAGAIAAcAAAAEAAIAADAIAAIAAAAEAAIAADAIAAMAAAAGAAEAAGAFAAQAAAAGAAEAAAAGAAQAAAAGAAEAADAHAAQAAAAGAAEAAAAIAAQAAAACAAEAAGAJAAQAAAAGAAEAAAAKAAQAAAAFAAEAAAALAAQAAAAGAAEAAAAMAAcAAAAGAAEAAGAMAAgAAAAGAAEAAGAMAAkAAAAHAAIAAAADAAEAAAAFAAAAADAEAAEAAAAFAAAAADAFAAEAAAAEAAAAADAGAAAAAAAHAAAAAFAFAAAAAAABAAEAAFAEAAAAAAAFAAIAAAADAAAAAAAFAAIAAAAPAAoAAAAEAAAAAAAQAAkAAAAEAAAAAAARAAkAAAAFAAAAAAASAAkAAAAFAAAAAAAQAAoAAAABAAIAAGARAAoAAAAFAAIAAAASAAoAAAAFAAIAAAASAAAAAAAEAAAAAGACAAsAAAABAAIAAAATAAsAAAACAAAAAAA=")
 tile_set = ExtResource("2_n46q3")
 
 [node name="QueueManager" parent="." instance=ExtResource("7_l53as")]
 z_index = 1
-position = Vector2(-304, 45)
+position = Vector2(16, 45)
 
 [node name="QueueTileMap" type="TileMapLayer" parent="."]
 z_index = 5
-position = Vector2(-320, 0)
 tile_map_data = PackedByteArray("AAAAAAEAAAADAAAAAAAAAAMAAAACAAAAAAAAAAQAAAACAAAAAAAAAAUAAAACAAAAAAAAAAYAAAACAAAAAAAAAAcAAAACAAAAAAAAAAgAAAACAAAAAAAAAAkAAAACAAAAAAABAAEAAAAEAAAAAAABAAMAAAACAAAAAAABAAQAAAACAAAAAAABAAUAAAACAAAAAAABAAYAAAACAAAAAAABAAcAAAACAAAAAAABAAgAAAACAAAAAAABAAkAAAACAAAAAAAAAAoAAAACAAAAAAAAAAsAAAACAAAAAAABAAoAAAACAAAAAAABAAsAAAACAAAAAAAAAAAAAAACAAAAAAABAAAAAAACAAAAAAABAAIAAAABAAAAAAAAAAIAAAAAAAAAAAA=")
-tile_set = SubResource("TileSet_08mmt")
+tile_set = SubResource("TileSet_ep78u")
 
-[node name="RedSushi" parent="." instance=ExtResource("8_l53as")]
-position = Vector2(-184, 45)
+[node name="DestructableWall" parent="." instance=ExtResource("4_btoec")]
+position = Vector2(216, 41)
 
-[node name="RedSushi2" parent="." instance=ExtResource("8_l53as")]
-position = Vector2(-195, 45)
+[node name="GreenSushi4" parent="." instance=ExtResource("7_08mmt")]
+position = Vector2(262, 77)
 
-[node name="RedSushi3" parent="." instance=ExtResource("8_l53as")]
-position = Vector2(-173, 45)
+[node name="GreenSushi5" parent="." instance=ExtResource("7_08mmt")]
+position = Vector2(272, 77)
 
-[node name="DestructableWall6" parent="." instance=ExtResource("4_btoec")]
-position = Vector2(-88, 41)
-
-[node name="DestructableWall7" parent="." instance=ExtResource("4_btoec")]
-position = Vector2(-200, 105)
-
-[node name="RedSushi6" parent="." instance=ExtResource("8_l53as")]
-position = Vector2(-265, 93)
-
-[node name="RedSushi7" parent="." instance=ExtResource("8_l53as")]
-position = Vector2(-254, 93)
-
-[node name="RedSushi8" parent="." instance=ExtResource("8_l53as")]
-position = Vector2(-243, 93)
-
-[node name="RedSushi9" parent="." instance=ExtResource("8_l53as")]
-position = Vector2(-232, 93)
+[node name="GreenSushi6" parent="." instance=ExtResource("7_08mmt")]
+position = Vector2(282, 77)
 
 [node name="DestructableWall3" parent="." instance=ExtResource("4_btoec")]
-position = Vector2(-56, 25)
+position = Vector2(87, 152)
+rotation = 1.5708
+
+[node name="DestructableWall2" parent="." instance=ExtResource("4_btoec")]
+position = Vector2(151, 137)
+rotation = 1.5708
 
 [node name="DestructableWall4" parent="." instance=ExtResource("4_btoec")]
-position = Vector2(-25, 120)
-rotation = 1.56489
-
-[node name="Cheese" parent="." instance=ExtResource("9_08mmt")]
-position = Vector2(-264, 144)
-
-[node name="Door" parent="." instance=ExtResource("10_5ot28")]
-position = Vector2(-253, 144)
-flip = true
+position = Vector2(152, 169)
 
 [node name="DestructableWall5" parent="." instance=ExtResource("4_btoec")]
-position = Vector2(-216, 137)
+position = Vector2(185, 152)
+rotation = -1.5708
+
+[node name="Cheese" parent="." instance=ExtResource("9_08mmt")]
+position = Vector2(296, 144)
+
+[node name="Door" parent="." instance=ExtResource("10_5ot28")]
+position = Vector2(285, 144)
+
+[node name="GreenSushi" parent="." instance=ExtResource("7_08mmt")]
+position = Vector2(87.5, 141)
+
+[node name="PauseMenu" parent="." instance=ExtResource("9_3sk1a")]
+visible = false

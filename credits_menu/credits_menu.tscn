@@ -36,11 +36,11 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="ColorRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 12
-text = "Programming: Miguel Diaz
-Art: Gabriel Velasquez
+theme_override_font_sizes/font_size = 10
+text = "Programming: Aquarmity
+Art/Level Design: Gabriel Velasquez
 Music: Jackson Calegari, kasisuli
-"
+A Game by Gamma Egg Studios"
 
 [node name="Back" type="Button" parent="ColorRect/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(50, 0)

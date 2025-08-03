@@ -9,7 +9,7 @@ func _on_play_pressed() -> void:
 	AudioManager.play_sfx(AudioManager.SoundEffects.MENU_BUTTON)
 	GlobalVars.main_menu_music_playing = false
 	AudioManager.play_song(AudioManager.Songs.LEVEL_THEME)
-	get_tree().change_scene_to_file("res://levels/level_0.tscn")
+	get_tree().change_scene_to_file("res://loading_screen/loading_screen.tscn")
 
 
 func _on_options_pressed() -> void:
