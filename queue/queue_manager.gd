@@ -6,7 +6,7 @@ const FILE_BEGIN = "res://levels/level_queues/level_"
 const NORMAL = "N"
 
 var queue: String
-
+var is_normal_cat = false
 
 func _ready() -> void:
 	SignalBus.update_queue.connect(_on_update_queue)
@@ -18,8 +18,13 @@ func _ready() -> void:
 	queue = queue.substr(0, queue.length() - 1)
 	f.close()
 	
-	update_player(queue[0])
-	queue = queue.substr(1)
+	
+	if queue.length() > 0:
+		update_player(queue[0])
+		queue = queue.substr(1)
+	else:
+		update_player(NORMAL)
+		is_normal_cat = true
 	update_queue(queue)
 
 func update_player(next: String) -> void:
@@ -51,8 +56,11 @@ func _on_update_queue() -> void:
 		update_queue(queue)
 	else:
 		update_player(NORMAL)
+		is_normal_cat = true
 
 func _on_append_queue(color: GlobalVars.PlayerColor) -> void:
+	
+	print(is_normal_cat)
 	match color:
 		GlobalVars.PlayerColor.RED:
 			queue += "R"
@@ -62,7 +70,13 @@ func _on_append_queue(color: GlobalVars.PlayerColor) -> void:
 			queue += "B"
 		GlobalVars.PlayerColor.NORMAL:
 			pass
+	if queue.length() == 1 and is_normal_cat:
+		update_player(queue[0])
+		queue = queue.substr(1)
+		is_normal_cat = false
 	update_queue(queue)
+	
+	print(is_normal_cat)
 
 func create_sprite(c: String, pos: Vector2) -> void:
 	var new_sprite = queue_sprite.instantiate()
