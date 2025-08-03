@@ -8,24 +8,28 @@ enum SoundEffects {
 	STATUE,
 	BUSH,
 	NO_BUSH,
-	BIRD_CHIRP
+	BIRD_CHIRP,
+	MENU_BUTTON
 }
 
 enum Songs {
-	
+	MAIN_MENU,
+	LEVEL_THEME
 }
 
 const SFX_RESOURCES := {
 	SoundEffects.RESPAWN: preload("res://player/respawn.wav"),
-	SoundEffects.EXPLOSION: preload("res://player/explosion3.wav"),
-	SoundEffects.STATUE: preload("res://player/statue3.wav"),
+	SoundEffects.EXPLOSION: preload("res://player/explosion.wav"),
+	SoundEffects.STATUE: preload("res://player/statue.wav"),
 	SoundEffects.BUSH: preload("res://player/bush.wav"),
 	SoundEffects.NO_BUSH: preload("res://player/no_bush.wav"),
-	SoundEffects.BIRD_CHIRP: preload("res://bird/bird_chirp.wav")
+	SoundEffects.BIRD_CHIRP: preload("res://bird/bird_chirp.wav"),
+	SoundEffects.MENU_BUTTON: preload("res://main_menu/menu_select.wav")
 }
 
 const SONG_RESOURCES := {
-	
+	Songs.MAIN_MENU: preload("res://main_menu/main_menu.mp3"),
+	Songs.LEVEL_THEME: preload("res://levels/level_theme.mp3")
 }
 
 

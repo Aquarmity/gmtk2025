@@ -1,0 +1,54 @@
+[gd_scene load_steps=2 format=3 uid="uid://bry07eap3hmqc"]
+
+[ext_resource type="Script" uid="uid://86f47mjafc54" path="res://pause_menu/pause_menu.gd" id="1_5hbt6"]
+
+[node name="PauseMenu" type="CanvasLayer"]
+script = ExtResource("1_5hbt6")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 180.0
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = 56.5
+offset_right = 300.0
+offset_bottom = 83.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Paused"
+
+[node name="Resume" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Resume"
+
+[node name="MainMenu" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Main Menu"
+
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]

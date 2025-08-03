@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://g3g51dtpaoa1"
-path="res://.godot/imported/statue2.wav-776cf02c82eb2f2b2f139b6595474a2c.sample"
+uid="uid://cykjq2g8h6hug"
+path="res://.godot/imported/menu_select.wav-70f7f4f495a41322e97db0f63f93d6bb.sample"
 
 [deps]
 
-source_file="res://player/statue2.wav"
-dest_files=["res://.godot/imported/statue2.wav-776cf02c82eb2f2b2f139b6595474a2c.sample"]
+source_file="res://main_menu/menu_select.wav"
+dest_files=["res://.godot/imported/menu_select.wav-70f7f4f495a41322e97db0f63f93d6bb.sample"]
 
 [params]
 

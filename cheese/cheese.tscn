@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://whlrsawq0dec"]
 
-[ext_resource type="Texture2D" uid="uid://7hprmi87g6ba" path="res://cheese.png" id="1_bo2k3"]
+[ext_resource type="Texture2D" uid="uid://7hprmi87g6ba" path="res://cheese/cheese.png" id="1_bo2k3"]
 
 [node name="Cheese" type="Node2D"]
 
